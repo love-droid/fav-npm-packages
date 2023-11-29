@@ -11,7 +11,9 @@ import {
   getKeyValue,
 } from "@nextui-org/react";
 import {FavoriteContext} from "../Store/FavoriteState";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 function IndexPage() {
   // Define the gradient animation
@@ -70,14 +72,15 @@ function IndexPage() {
   ];
   const { data , setData } =  useContext(FavoriteContext);
 
-
-  
-  // Update local storage whenever data changes
-  // useEffect(() => {
-  //   return () => {
-  //   localStorage.setItem("data", JSON.stringify(data));
-  // }
-  // }, [data]); 
+  const handleDelete = (index) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    if (confirmDelete) {
+      const newData = [...data];
+      newData.splice(index, 1);
+      setData(newData);
+      localStorage.setItem("data", JSON.stringify(newData));
+    }
+  }
   const navigate = useNavigate();
   return (
     <>
@@ -106,14 +109,18 @@ function IndexPage() {
       </tr>
     </thead>
 
-    <tbody className="divide-y divide-gray-200 h-[40vh]">
+    <tbody className="divide-y divide-gray-200 max-h-[40vh]">
   {data?.map((item, index) => (
     <tr key={index} className="p-2 bg-gray-300 rounded-md">
-      <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+      <td className="whitespace-nowrap py-4 px-4 text-xl font-medium text-gray-900">
         {item.packagename}
       </td>
-      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+      <td className="flex space-x-4 py-4 whitespace-nowrap items-center justify-between px-4 py-2 text-gray-700">
         {item.description}
+        <span className="text-xl flex space-x-7" >
+        <Link to={item.link} target="blank"><FaExternalLinkAlt /></Link>
+         <span onClick={() => handleDelete(index)}><MdDelete /></span> 
+        </span>
       </td>
     </tr>
   ))}

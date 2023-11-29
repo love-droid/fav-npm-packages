@@ -27,9 +27,11 @@ function HomePage() {
   const navigate = useNavigate();
 
     const { data , setData } =  useContext(FavoriteContext);
+    useEffect(() =>{
+      if(localStorage.getItem("data")) navigate('/IndexPage')
+    },[])
 
-
-  return (
+  return (  
     <>
   <div className="h-[40vh] flex items-center justify-center">
     <GradientText>

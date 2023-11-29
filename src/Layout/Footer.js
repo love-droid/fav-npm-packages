@@ -8,7 +8,7 @@ const Footer = () => {
         <span role="img" aria-label="heart" className="text-red-500">
           ❤️
         </span>{" "}
-        by ❤️{" "}
+        by Love{" "}
       </p>
     </footer>
   );

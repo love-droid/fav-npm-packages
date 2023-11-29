@@ -6,11 +6,12 @@ import {FavoriteContext} from "../Store/FavoriteState";
 import {debounce} from 'lodash';
 import { useNavigate } from "react-router-dom";
 
+
 function AddFavourite() {
   const { data , setData } =  useContext(FavoriteContext);
   const [packagesList, setPackagesList] = useState([]); // Added useState hook
   const [searchQuery, setSearchQuery] = useState(''); // Added useState hook
-  const [selectedPackage, setSelectedPackage] = useState({packagename:"" , description: "" }); // Added useState hook
+  const [selectedPackage, setSelectedPackage] = useState({packagename:"" , description: "" , link: ""}); // Added useState hook
   // console.log(data)
  const navigate = useNavigate();
   const searchPackages = (searchQuery) => {
@@ -30,7 +31,7 @@ function AddFavourite() {
   }
 
 const addPackage = async () => {
-  const newData = await [...data, {packagename: selectedPackage.packagename , description: selectedPackage.description}]; 
+  const newData = await [...data, {packagename: selectedPackage.packagename , description: selectedPackage.description , link: selectedPackage.link}]; 
   await setData(newData);
   // alert(selectedPackage.packagename)
   // localStorage.setItem("data", JSON.stringify(data));
@@ -73,7 +74,7 @@ useEffect(() => {
         {packagesList?.map((item) => (
           <li className="flex space-x-2 cursor-pointer items-center h-10 shadow-sm w-fit px-2 p-1 bg-[#E9E6E6]" key={item.package.name}>
                       <input onChange={() => {
-                        setSelectedPackage({packagename: item.package.name})
+                        setSelectedPackage({packagename: item.package.name , link: item.package.links.npm})
                       }} type="radio" id={item.package.name} className="form-radio" name="radio" />
             <label className="cursor-pointer" htmlFor={item.package.name}>{item.package.name}</label>
           </li>
