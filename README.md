@@ -23,13 +23,6 @@ To install the project, follow these steps:
 
 After starting the development server, you can view the application in your web browser at `http://localhost:3000`.
 
-## Contributing
-
-Contributions are welcome. Please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
 
 ## Features
 
@@ -52,9 +45,17 @@ This project is licensed under the MIT License.
    - Implemented a confirmation mechanism before deletion.
 
 
+
 5. **Technologies Used**
    - Frontend Framework - React.
    - Applied Tailwind CSS along with (Mui, Next Ui ) for styling to enhance the visual appeal of the app.
    - Firebase for deployment
 
 
+## Contributing
+
+Contributions are welcome. Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
