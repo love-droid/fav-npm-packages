@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled, { keyframes } from 'styled-components';
-import {Button} from "@nextui-org/react";
+import Buton from '../Components/Button';
 
 // Define the gradient animation
 const gradient = keyframes`
@@ -37,9 +37,7 @@ function HomePage() {
 
   <div className="relative border-2 border-gray-300 p-4 rounded h-[30vh] w-[80vw] flex flex-col items-center justify-center mx-auto my-auto mb-[25vh]">
   <p>Content goes here </p>
-  <Button radius="full" className="bg-gradient-to-tr from-teal-500 to-teal-300 text-white shadow-lg mt-4 rounded-full p-3">
-    Button
-</Button>
+  <Buton/>
 </div>
 </>
   )
