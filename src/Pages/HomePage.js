@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled, { keyframes } from 'styled-components';
 import Buton from '../Components/Button';
+import { useNavigate } from 'react-router-dom';
 
 // Define the gradient animation
 const gradient = keyframes`
@@ -22,10 +23,7 @@ const GradientText = styled.div`
 `;
 
 function HomePage() {
-
-  
-
-
+  const navigate = useNavigate();
 
   return (
     <>
@@ -36,8 +34,18 @@ function HomePage() {
   </div>
 
   <div className="relative border-2 border-gray-300 p-4 rounded h-[30vh] w-[80vw] flex flex-col items-center justify-center mx-auto my-auto mb-[25vh]">
-  <p>Content goes here </p>
-  <Buton/>
+  <p> Add you favourite packages </p>
+  
+  <button
+  className='bg-gradient-to-tr from-teal-500 to-teal-300 text-white shadow-lg mt-4 rounded-full p-3'
+  onClick={
+    () => {
+      navigate('/AddFavourite')
+    }
+  }>
+    Add Packages
+  </button>
+  
 </div>
 </>
   )

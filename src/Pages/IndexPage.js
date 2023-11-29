@@ -1,4 +1,4 @@
-import React from "react";
+import {React , useContext, useEffect} from "react";
 import styled, { keyframes } from "styled-components";
 import Buton from "../Components/Button";
 import {
@@ -10,6 +10,8 @@ import {
   TableCell,
   getKeyValue,
 } from "@nextui-org/react";
+import {FavoriteContext} from "../Store/FavoriteState";
+import { useNavigate } from "react-router-dom";
 
 function IndexPage() {
   // Define the gradient animation
@@ -66,35 +68,53 @@ function IndexPage() {
       label: "ROLE",
     },
   ];
-
+  const { data , setData } =  useContext(FavoriteContext);
+  useEffect(() => {
+    console.log(data)
+  }, [])
+  const navigate = useNavigate();
   return (
     <>
       <div className="h-[20vh] flex items-center justify-center">
         <GradientText>Welcome to the Favorite NPM Packages.</GradientText>
       </div>
 
-      <div className="flex justify-center items-center mt-2">
-        <Buton />
-      </div>
+      <div className="mt-4 flex justify-center">
+         <button onClick={ () => {
+            navigate('/AddFavourite')
+            // alert({data})
+         }} className="bg-gradient-to-tr from-teal-500 to-teal-300 text-white shadow-lg mt-4 rounded-full p-3">Add package</button>
+        </div>
+        
 
-      <TableContainer>
-        <CustomTable aria-label="Example table with dynamic content">
-          <TableHeader columns={columns}>
-            {(column) => (
-              <TableColumn key={column.key}>{column.label}</TableColumn>
-            )}
-          </TableHeader>
-          <TableBody items={rows}>
-            {(item) => (
-              <TableRow key={item.key}>
-                {(columnKey) => (
-                  <TableCell>{getKeyValue(item, columnKey)}</TableCell>
-                )}
-              </TableRow>
-            )}
-          </TableBody>
-        </CustomTable>
-      </TableContainer>
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+    <thead class="ltr:text-left rtl:text-right">
+      <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          Package Name
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          Description
+        </th>
+      </tr>
+    </thead>
+
+    <tbody className="divide-y divide-gray-200 h-[40vh]">
+  {data.map((item, index) => (
+    <tr key={index} className="bg-red-500 h-10">
+      <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+        {item.packagename}
+      </td>
+      <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+        {item.description}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+  </table>
+</div>
     </>
   );
 }
