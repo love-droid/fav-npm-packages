@@ -6,7 +6,6 @@ import AddFavourite from "./Pages/AddFavourite";
 import IndexPage from "./Pages/IndexPage";
 import { useNavigate } from "react-router-dom";
 import FavoriteState from "./Store/FavoriteState";
-import {FavoriteContext} from "../Store/FavoriteState";
 
 
 
@@ -14,20 +13,17 @@ import {FavoriteContext} from "../Store/FavoriteState";
 
 export default function App() {
 
-  const { data , setData } =  useContext(FavoriteContext);
-
   return (
     <FavoriteState>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Master />}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Master />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/AddFavourite" element={<AddFavourite />} />
           <Route path="/IndexPage" element={<IndexPage />} />
-        </Route>
-      </Routes>
-    </Router>
+          </Route>
+        </Routes>
+      </Router>
     </FavoriteState>
-   
   );
 }

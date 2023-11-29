@@ -29,12 +29,20 @@ function AddFavourite() {
     debouncedSearchPackages();
   }
 
-const addPackage = () => {
-  console.log(selectedPackage)
-  setData([...data, selectedPackage]);
-  // alert(selectedPackage.description)
+const addPackage = async () => {
+  const newData = await [...data, {packagename: selectedPackage.packagename , description: selectedPackage.description}]; 
+  await setData(newData);
+  // alert(selectedPackage.packagename)
+  // localStorage.setItem("data", JSON.stringify(data));
+  // console.log(data)
   navigate('/IndexPage'); // Added
 }
+
+useEffect(() => {
+  return () => {
+  localStorage.setItem("data", JSON.stringify(data));
+}
+}, [data]);
 
   return (
     <div className="h-screen flex flex-col px-[6%] items-center pt-20">

@@ -69,9 +69,15 @@ function IndexPage() {
     },
   ];
   const { data , setData } =  useContext(FavoriteContext);
-  useEffect(() => {
-    console.log(data)
-  }, [])
+
+
+  
+  // Update local storage whenever data changes
+  // useEffect(() => {
+  //   return () => {
+  //   localStorage.setItem("data", JSON.stringify(data));
+  // }
+  // }, [data]); 
   const navigate = useNavigate();
   return (
     <>
@@ -79,30 +85,30 @@ function IndexPage() {
         <GradientText>Welcome to the Favorite NPM Packages.</GradientText>
       </div>
 
-      <div className="mt-4 flex justify-center">
+      <div className=" flex justify-center">
          <button onClick={ () => {
             navigate('/AddFavourite')
             // alert({data})
-         }} className="bg-gradient-to-tr from-teal-500 to-teal-300 text-white shadow-lg mt-4 rounded-full p-3">Add package</button>
+         }} className="bg-gradient-to-tr from-teal-500 to-teal-300 text-white shadow-lg mb-10 rounded-full p-3">Add package</button>
         </div>
         
 
-<div class="overflow-x-auto">
-  <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+<div class="overflow-auto px-[6%] rounded-md">
+  <table class="w-full divide-y-2  divide-gray-200 bg-white text-sm">
     <thead class="ltr:text-left rtl:text-right">
       <tr>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+        <th class="whitespace-nowrap px-4 bg-gray-400 py-2 font-medium text-gray-900">
           Package Name
         </th>
-        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+        <th class="whitespace-nowrap bg-gray-400 px-4 py-2 font-medium text-gray-900">
           Description
         </th>
       </tr>
     </thead>
 
     <tbody className="divide-y divide-gray-200 h-[40vh]">
-  {data.map((item, index) => (
-    <tr key={index} className="bg-red-500 h-10">
+  {data?.map((item, index) => (
+    <tr key={index} className="p-2 bg-gray-300 rounded-md">
       <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
         {item.packagename}
       </td>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled, { keyframes } from 'styled-components';
 import Buton from '../Components/Button';
 import { useNavigate } from 'react-router-dom';
+import {FavoriteContext} from "../Store/FavoriteState";
 
 // Define the gradient animation
 const gradient = keyframes`
@@ -24,6 +25,9 @@ const GradientText = styled.div`
 
 function HomePage() {
   const navigate = useNavigate();
+
+    const { data , setData } =  useContext(FavoriteContext);
+
 
   return (
     <>
