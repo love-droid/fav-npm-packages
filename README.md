@@ -2,7 +2,36 @@
 
 Welcome to the **Favorite NPM Packages App** repository! Below are the functionalities implemented:
 
-## Requirements
+# Betalectic Assignment
+
+**Deployment Link: [https://betalecticassignment.web.app/](https://betalecticassignment.web.app/)**
+
+## Project Description
+
+This project is a Betalectic assignment. It's a web application built with React.
+
+## Installation
+
+To install the project, follow these steps:
+
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd <project-directory>`
+3. Install the dependencies: `npm install`
+4. Start the development server: `npm start`
+
+## Usage
+
+After starting the development server, you can view the application in your web browser at `http://localhost:3000`.
+
+## Contributing
+
+Contributions are welcome. Please open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Features
 
 1. **Search for NPM Packages**
    - Call APIs based on text input.
@@ -26,5 +55,6 @@ Welcome to the **Favorite NPM Packages App** repository! Below are the functiona
 5. **Technologies Used**
    - Frontend Framework - React.
    - Applied Tailwind CSS along with (Mui, Next Ui ) for styling to enhance the visual appeal of the app.
+   - Firebase for deployment
 
 
